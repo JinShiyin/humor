@@ -642,7 +642,12 @@ class MeshViewer(object):
                 output_img = (color_img[:, :, :-1] * color_img[:,:,3:] +
                               (1.0 - color_img[:,:,3:])*input_img)
             else:
-                output_img = (color_img[:, :, :-1] * valid_mask +
+                # print(color_img[:, :, :-1].shape)
+                # print(valid_mask.shape)
+                # print(input_img.shape)
+                # output_img = (color_img[:, :, :-1] * valid_mask +
+                #             (1 - valid_mask) * input_img)
+                output_img = (color_img * valid_mask +
                             (1 - valid_mask) * input_img)                
 
             output_img = (output_img*255.0).astype(np.uint8)
